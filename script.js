@@ -102,4 +102,57 @@ document.addEventListener('DOMContentLoaded', () => {
       renderTable(currentCategory);
     });
   });
+
+    fetch(`settings.json?t=${Date.now()}`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(settings => {
+      const footerInfo = document.getElementById('footer-info');
+      if (!footerInfo) return;
+
+      // 3. Discord (при нажатии меняет текст на значение из JSON)
+      if (settings.ds && settings.ds.trim() !== '') {
+        const dsValue = settings.ds.trim();
+        const dsBtn = document.createElement('button');
+        dsBtn.type = 'button';
+        dsBtn.className = 'social-btn';
+        dsBtn.textContent = 'Discord';
+
+        dsBtn.addEventListener('click', () => {
+          dsBtn.textContent = 'Discord: ' + dsValue;
+          if (navigator.clipboard) {
+            navigator.clipboard.writeText(dsValue).catch(() => {});
+          }
+        });
+
+        footerInfo.appendChild(dsBtn);
+      }
+
+      const otherLinks = [
+        { key: 'tg_server', label: 'Канал' },
+        { key: 'yt_channel', label: 'YouTube' },
+        { key: 'tg', label: 'Telegram' }
+      ];
+
+      otherLinks.forEach(item => {
+        const url = settings[item.key];
+        if (url && url.trim() !== '') {
+          const link = document.createElement('a');
+          link.href = url.trim();
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+          link.className = 'social-btn';
+          link.textContent = item.label;
+          footerInfo.appendChild(link);
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Ошибка загрузки settings.json:', error);
+    });
+
 });
