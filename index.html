@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B'S PROJECTS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg-layer"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="container">
+    <header>
+      <h1>B'S PROJECTS</h1>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-category="done">Done (<span id="count-done">0</span>)</button>
+      <button class="tab-btn" data-category="wip">Wip (<span id="count-wip">0</span>)</button>
+      <button class="tab-btn" data-category="frozen">Frozen (<span id="count-frozen">0</span>)</button>
+      <button class="tab-btn" data-category="cancelled">Cancelled (<span id="count-cancelled">0</span>)</button>
+    </nav>
+
+    <main class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Information</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="projects-body">
+          <tr>
+            <td colspan="3" style="text-align: center;">Загрузка данных...</td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <footer>
+      <button id="refresh-btn" onclick="location.reload()">Refresh</button>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
