@@ -1,9 +1,10 @@
-// фоны
+// 1. НАСТРОЙКА СЛУЧАЙНЫХ ФОНОВЫХ КАРТИНОК
+// Укажите здесь точные имена файлов из папки backgrounds
 const backgroundImages = [
   '1.jpg',
   '2.jpg',
   '3.jpg',
-  '3.jpg',
+  '4.jpg'
 ];
 
 let lastBgIndex = -1;
@@ -20,9 +21,11 @@ function changeBackground() {
   bgLayer.style.backgroundImage = `url('backgrounds/${backgroundImages[randomIndex]}')`;
 }
 
+// Запускаем первый фон сразу и меняем каждые 15 секунд
 changeBackground();
 setInterval(changeBackground, 15000);
 
+// 2. ЗАГРУЗКА ДАННЫХ И ОТОБРАЖЕНИЕ ТАБЛИЦЫ
 let projectsData = {};
 let currentCategory = 'done';
 
@@ -34,9 +37,9 @@ fetch(`projects_info.json?t=${Date.now()}`)
     renderTable(currentCategory);
   })
   .catch(error => {
-    console.error('ошибка загрузки JSON:', error);
+    console.error('Ошибка загрузки JSON:', error);
     document.getElementById('projects-body').innerHTML =
-      '<tr><td colspan="3" style="text-align: center; color: #ff6b6b;">Can\'t get the data</td></tr>';
+      '<tr><td colspan="3" style="text-align: center; color: #ff6b6b;">Не удалось загрузить projects_info.json</td></tr>';
   });
 
 function updateCounts() {
@@ -54,7 +57,7 @@ function renderTable(category) {
   const categoryItems = projectsData[category];
 
   if (!categoryItems || Object.keys(categoryItems).length === 0) {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">There\'s nothing here yet</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">В этой категории пока нет проектов</td></tr>';
     return;
   }
 
