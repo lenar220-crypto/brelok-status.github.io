@@ -13,7 +13,6 @@ body {
   background-color: #111;
 }
 
-/* Полноэкранный фон с плавной сменой */
 #bg-layer {
   position: fixed;
   top: 0;
@@ -26,14 +25,13 @@ body {
   z-index: -2;
 }
 
-/* Полупрозрачное затемнение, чтобы текст хорошо читался на любом фоне */
 .bg-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgb(255 255 255 / 0.65);
+  background: rgb(120 120 120 / 0.65);
   backdrop-filter: blur(4px);
   z-index: -1;
 }
@@ -56,7 +54,6 @@ header h1 {
   text-transform: uppercase;
 }
 
-/* Кнопки категорий */
 .tabs {
   display: flex;
   justify-content: center;
@@ -87,7 +84,6 @@ header h1 {
   border-color: #ffffff;
 }
 
-/* Таблица */
 .table-wrapper {
   background: rgba(20, 20, 20, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -100,20 +96,19 @@ table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  table-layout: fixed; /* Фиксирует ширину колонок, не давая им разъезжаться */
+  table-layout: fixed;
 }
 
 th, td {
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  overflow-wrap: break-word; /* Переносит даже очень длинные слова без пробелов */
+  overflow-wrap: break-word;
   word-wrap: break-word;
 }
 
-/* Задаем пропорции колонок (в сумме 100%) */
-th:nth-child(1), td:nth-child(1) { width: 32%; } /* Name */
-th:nth-child(2), td:nth-child(2) { width: 52%; } /* Information */
-th:nth-child(3), td:nth-child(3) { width: 16%; } /* Date */
+th:nth-child(1), td:nth-child(1) { width: 32%; }
+th:nth-child(2), td:nth-child(2) { width: 52%; }
+th:nth-child(3), td:nth-child(3) { width: 16%; }
 
 th {
   background: rgba(255, 255, 255, 0.08);
@@ -128,7 +123,6 @@ tr:last-child td {
   border-bottom: none;
 }
 
-/* Колонка Name с иконкой позади текста */
 .name-cell {
   display: flex;
   align-items: center;
@@ -137,13 +131,12 @@ tr:last-child td {
   font-size: 1.05rem;
 }
 
-/* НАСТРОЙКА КВАДРАТНОЙ ИКОНКИ */
 .project-icon {
   width: 38px;
   height: 38px;
-  min-width: 38px; /* Не дает сжиматься на узких экранах */
-  border-radius: 6px; /* Скругление углов (0px для острых углов) */
-  object-fit: cover; /* Делает картинку квадратной без искажения пропорций */
+  min-width: 38px;
+  border-radius: 6px; 
+  object-fit: cover;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -153,7 +146,6 @@ tr:last-child td {
   font-size: 0.95rem;
 }
 
-/* Подвал и кнопка Refresh */
 footer {
   margin-top: 30px;
   text-align: center;
@@ -161,8 +153,8 @@ footer {
 
 #refresh-btn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fff;
+  border: 1px solid rgb(255 255 255 / 0.4);
+  color: #ffffff;
   padding: 10px 28px;
   font-size: 1rem;
   border-radius: 6px;
@@ -172,5 +164,5 @@ footer {
 
 #refresh-btn:hover {
   background: rgba(255, 255, 255, 0.15);
-  border-color: #fff;
+  border-color: #ffffff;
 }
