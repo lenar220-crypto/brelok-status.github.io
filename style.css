@@ -13,7 +13,6 @@ body {
   background-color: #111;
 }
 
-/* Полноэкранный фон с плавной сменой */
 #bg-layer {
   position: fixed;
   top: 0;
@@ -55,7 +54,6 @@ header h1 {
   text-transform: uppercase;
 }
 
-/* Кнопки категорий */
 .tabs {
   display: flex;
   justify-content: center;
@@ -86,7 +84,6 @@ header h1 {
   border-color: #ffffff;
 }
 
-/* Таблица */
 .table-wrapper {
   background: rgba(20, 20, 20, 0.75);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -135,13 +132,12 @@ tr:last-child td {
   font-size: 1.05rem;
 }
 
-/* НАСТРОЙКА КВАДРАТНОЙ ИКОНКИ */
 .project-icon {
   width: 38px;
   height: 38px;
-  min-width: 38px; /* Не дает сжиматься на узких экранах */
-  border-radius: 6px; /* Скругление углов (0px для острых углов) */
-  object-fit: cover; /* Делает картинку квадратной без искажения пропорций */
+  min-width: 38px;
+  border-radius: 6px;
+  object-fit: cover;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -170,4 +166,35 @@ footer {
 #refresh-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: #ffffff;
+}
+
+#footer-info {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.social-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.social-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+}
+
+.copyright-text {
+  color: #bbb;
+  font-size: 0.95rem;
 }
