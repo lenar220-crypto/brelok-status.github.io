@@ -1,5 +1,4 @@
-// 1. НАСТРОЙКА ФОНОВЫХ КАРТИНОК
-// Укажите здесь имена файлов, которые лежат в папке backgrounds
+// фоны
 const backgroundImages = [
   '1.jpg',
   '2.jpg',
@@ -7,13 +6,18 @@ const backgroundImages = [
   '3.jpg',
 ];
 
-let currentBgIndex = 0;
+let lastBgIndex = -1;
 const bgLayer = document.getElementById('bg-layer');
 
 function changeBackground() {
   if (backgroundImages.length === 0) return;
-  bgLayer.style.backgroundImage = `url('backgrounds/${backgroundImages[currentBgIndex]}')`;
-  currentBgIndex = (currentBgIndex + 1) % backgroundImages.length;
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * backgroundImages.length);
+  } while (randomIndex === lastBgIndex && backgroundImages.length > 1);
+
+  lastBgIndex = randomIndex;
+  bgLayer.style.backgroundImage = `url('backgrounds/${backgroundImages[randomIndex]}')`;
 }
 
 changeBackground();
@@ -21,7 +25,7 @@ setInterval(changeBackground, 15000);
 
 let projectsData = {};
 let currentCategory = 'done';
-)
+
 fetch(`projects_info.json?t=${Date.now()}`)
   .then(response => response.json())
   .then(data => {
@@ -30,9 +34,9 @@ fetch(`projects_info.json?t=${Date.now()}`)
     renderTable(currentCategory);
   })
   .catch(error => {
-    console.error('Ошибка загрузки JSON:', error);
+    console.error('ошибка загрузки JSON:', error);
     document.getElementById('projects-body').innerHTML =
-      '<tr><td colspan="3" style="text-align: center; color: #ff6b6b;">can\'t download the data</td></tr>';
+      '<tr><td colspan="3" style="text-align: center; color: #ff6b6b;">Can\'t get the data</td></tr>';
   });
 
 function updateCounts() {
@@ -50,7 +54,7 @@ function renderTable(category) {
   const categoryItems = projectsData[category];
 
   if (!categoryItems || Object.keys(categoryItems).length === 0) {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">В этой категории пока нет проектов</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #888;">There\'s nothing here yet</td></tr>';
     return;
   }
 
