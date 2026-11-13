@@ -50,15 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   function updateCounts() {
-    const categories = ['done', 'wip', 'frozen', 'cancelled'];
-    categories.forEach(cat => {
-      const countEl = document.getElementById(`count-${cat}`);
-      if (countEl) {
-        const count = projectsData[cat] ? Object.keys(projectsData[cat]).length : 0;
-        countEl.textContent = count;
-      }
-    });
-  }
+  const categories = ['done', 'wip', 'future', 'frozen', 'cancelled'];
+  categories.forEach(cat => {
+    const count = projectsData[cat] ? Object.keys(projectsData[cat]).length : 0;
+    document.getElementById(`count-${cat}`).textContent = count;
+  });
+}
 
   function renderTable(category) {
     const tbody = document.getElementById('projects-body');
